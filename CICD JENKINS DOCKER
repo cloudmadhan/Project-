@@ -22,7 +22,7 @@ node{
      stage("Deploy to docker swarm cluster"){
         sshagent(['ssh']) {
     // some block
-            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.0.86 docker rm javawebapp || true'
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.0.86 docker rm -f javawebapp || true'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.0.86 docker run -d --name javawebapp -p 8080:8080  madhanshashi/java-web-app:latest"
         }
     }
